@@ -6,14 +6,46 @@ data ++; }
 
 void blit_str256(const char *str, int x, int y)
 {
-    for(int i=0; i<strlen(str); i++) {
-        if (str[i]>='@'&& str[i]<=']') wb32_blitBuf8(8*(str[i]-'@'),0,240, x+i*8, y, 8, 8, (uint8_t *)sprites);
-        if (str[i]>='!'&& str[i]<='>') wb32_blitBuf8(8*(str[i]-'!'),8,240, x+i*8, y, 8, 8, (uint8_t *)sprites);
-        if (str[i]=='?') wb32_blitBuf8(8*14,16,240, x+i*8, y, 8, 8, (uint8_t *)sprites);
-        if (str[i]=='c') wb32_blitBuf8(8*13,16,240, x+i*8, y, 8, 8, (uint8_t *)sprites);
-        if (str[i]=='w') wb32_blitBuf8(7,16,240, x+i*8, y, 26, 8, (uint8_t *)sprites);
-        if (str[i]=='x') wb32_blitBuf8(42,16,240, x+i*8, y, 61, 8, (uint8_t *)sprites);
-    }
+    void blit_str256(const char *str, int x, int y, bool select)
+{
+	if (!select)
+	{
+		for (int i = 0; i < strlen(str); i++)
+		{
+			if (str[i] >= '@' && str[i] <= ']')
+				wb32_blitBuf8(8 * (str[i] - '@'), 0, 240, x + i * 8, y, 8, 8, (uint8_t *)sprites);
+			if (str[i] >= '!' && str[i] <= '>')
+				wb32_blitBuf8(8 * (str[i] - '!'), 8, 240, x + i * 8, y, 8, 8, (uint8_t *)sprites);
+			if (str[i] == '?')
+				wb32_blitBuf8(8 * 14, 16, 240, x + i * 8, y, 8, 8, (uint8_t *)sprites);
+			if (str[i] == 'c')
+				wb32_blitBuf8(8 * 13, 16, 240, x + i * 8, y, 8, 8, (uint8_t *)sprites);
+			if (str[i] == 'w')
+				wb32_blitBuf8(7, 16, 240, x + i * 8, y, 26, 8, (uint8_t *)sprites);
+			if (str[i] == 'x')
+				wb32_blitBuf8(42, 16, 240, x + i * 8, y, 61, 8, (uint8_t *)sprites);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < strlen(str); i++)
+		{
+			if (str[i] >= '@' && str[i] <= ']')
+				wb32_blitBuf8(8 * (str[i] - '@'), 24, 240, x + i * 8, y, 8, 8, (uint8_t *)sprites);
+			if (str[i] >= '!' && str[i] <= '>')
+				wb32_blitBuf8(8 * (str[i] - '!'), 32, 240, x + i * 8, y, 8, 8, (uint8_t *)sprites);
+			if (str[i] == '?')
+				wb32_blitBuf8(8 * 14, 40, 240, x + i * 8, y, 8, 8, (uint8_t *)sprites);
+			if (str[i] == 'c')
+				wb32_blitBuf8(8 * 13, 40, 240, x + i * 8, y, 8, 8, (uint8_t *)sprites);
+			if (str[i] == 'w')
+				wb32_blitBuf8(7, 40, 240, x + i * 8, y, 26, 8, (uint8_t *)sprites);
+			if (str[i] == 'x')
+				wb32_blitBuf8(42, 40, 240, x + i * 8, y, 61, 8, (uint8_t *)sprites);
+		}
+	}
+	
+}
 }
 
 void blit_num256(uint16_t num, uint16_t x, uint16_t y, uint8_t color_mode)
