@@ -4,9 +4,8 @@ pixel[1] = header_data_cmap[(unsigned char)data[0]][1]; \
 pixel[2] = header_data_cmap[(unsigned char)data[0]][2]; \
 data ++; }
 
-void blit_str256(const char *str, int x, int y)
-{
-    void blit_str256(const char *str, int x, int y, bool select)
+
+void blit_str256(const char *str, int x, int y, bool select)
 {
 	if (!select)
 	{
@@ -45,7 +44,6 @@ void blit_str256(const char *str, int x, int y)
 		}
 	}
 	
-}
 }
 
 void blit_num256(uint16_t num, uint16_t x, uint16_t y, uint8_t color_mode)
